@@ -5,8 +5,10 @@ yjec-config
 ## Usage
 
 ```sh
-umi block https://github.com/https://github.com/kidkang/umi-config.git/tree/master/config
+umi block add https://github.com/yjtec/umi-block/tree/master/config
 ```
+
+https://github.com/yjtec/umi-block.git
 
 ## LICENSE
 

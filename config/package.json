@@ -1,5 +1,5 @@
 {
-  "name": "@umi-block/config",
+  "name": "@umi-block/Config",
   "version": "0.0.1",
   "description": "yjec-config",
   "main": "src/index.js",
@@ -7,7 +7,7 @@
     "name": "kidkang",
     "email": "723616880@qq.com"
   },
-  "repository": "https://github.com/kidkang/umi-config.git/config",
+  "repository": "https://github.com/yjtec/umi-block.git/config",
   "scripts": {
     "dev": "umi dev"
   },
