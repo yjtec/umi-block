@@ -1,0 +1,24 @@
+{
+  "name": "@umi-block/config",
+  "version": "0.0.1",
+  "description": "yjec-config",
+  "main": "src/index.js",
+  "authors": {
+    "name": "kidkang",
+    "email": "723616880@qq.com"
+  },
+  "repository": "https://github.com/kidkang/umi-config.git/config",
+  "scripts": {
+    "dev": "umi dev"
+  },
+  "dependencies": {
+    "react": ">=16.0.0",
+    "umi-plugin-react": "^1.7.4",
+    "umi-request": "^1.0.6"
+  },
+  "devDependencies": {
+    "umi": "^2.0.0",
+    "umi-plugin-block-dev": "^1.0.0"
+  },
+  "license": "MIT"
+}
