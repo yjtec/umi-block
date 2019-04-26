@@ -1,0 +1,25 @@
+{
+  "name": "@umi-block/yjtec-rbac",
+  "version": "0.0.1",
+  "description": "rbac umi",
+  "main": "src/index.js",
+  "authors": {
+    "name": "kidkang",
+    "email": "723616880@qq.com"
+  },
+  "repository": "umijs/umi-blocks/yjtec-rbac",
+  "scripts": {
+    "dev": "umi dev"
+  },
+  "dependencies": {
+    "ant-design-pro": "^2.3.1",
+    "react": ">=16.0.0",
+    "umi-plugin-react": "^1.7.5",
+    "umi-request": "^1.0.7"
+  },
+  "devDependencies": {
+    "umi": "^2.0.0",
+    "umi-plugin-block-dev": "^1.0.0"
+  },
+  "license": "MIT"
+}
