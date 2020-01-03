@@ -1,0 +1,27 @@
+{
+  "name": "@umi-block/bannerBlockDemo",
+  "version": "0.0.1",
+  "description": "banners picture",
+  "main": "src/index.js",
+  "authors": {
+    "name": "tsn",
+    "email": "2308092717@qq.com"
+  },
+  "repository": "https://github.com/tsn0106/umi-block-demo",
+  "scripts": {
+    "dev": "umi dev"
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^4.10.3",
+    "@yjtec/upload": "^1.0.2",
+    "ant-design-pro": "^2.3.1",
+    "react": ">=16.0.0",
+    "umi-plugin-react": "^1.7.5",
+    "umi-request": "^1.0.7"
+  },
+  "devDependencies": {
+    "umi": "^2.9.0",
+    "umi-plugin-block-dev": "^2.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,15 @@
+.submitButtons {
+    display: inline-block;
+    white-space: nowrap;
+    margin-top: 3px;
+}
+.submitButtonsRight{
+	float: right;
+    margin-top: 3px;
+	display: inline-block;
+    white-space: nowrap;
+}
+.logo{
+	width: 100px;
+	height: 100px;
+}
