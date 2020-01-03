@@ -80,15 +80,15 @@ class AddBanner extends Component{
           >  
           <Form {...formItemLayout} onSubmit={this.handleOk}>
             <Form.Item label="平台">
-              {getFieldDecorator('plateform',{
+              {getFieldDecorator('platform_id',{
               	rules:[{
 	                required:true,
 	                message:"选择平台"
 	              }],
               })(
 	              <Select style={{ width: 120 }} placeholder="请选择" >
-	                {Object.keys(typeData).map(item => (
-	                  <Option key={item} value={item}>{typeData[item].label}</Option>
+	                {typeData.map(item => (
+	                  <Option key={item.id} value={item.id}>{item.title}</Option>
 	                ))}
 	              </Select>
               )}
@@ -102,26 +102,26 @@ class AddBanner extends Component{
 	            })(<Input minLength={1} maxLength={12} style={{width:320}} />)}
 	          </Form.Item>
             <Form.Item label="图片">
-	            {getFieldDecorator('img',{
+	            {getFieldDecorator('pic',{
 	              rules:[{
 	                required:true,
 	                message:"请上传图片"
 	              }],
 	            })(<Upload 
 	                data={{
-	                  type:'redpack_cover'
+	                  type:'adv'
 	                }}
 	                action="/api/cmm/upload"
 	                buttonText="LOGO"
 	              />)}
 	          </Form.Item>
 	          <Form.Item label="排序">
-	            {getFieldDecorator('sort',{
+	            {getFieldDecorator('weight',{
 	            	initialValue: 0
-	            })(<InputNumber min={0} step={1} />)}
+	            })(<InputNumber min={0} step={1} max={255} />)}
 	          </Form.Item>
 	          <Form.Item label="跳转链接">
-	            {getFieldDecorator('url',{
+	            {getFieldDecorator('link',{
 	            	rules: [{
                   validator: this.onBlurSms
                 }]

@@ -1,11 +1,11 @@
 import {
-  query,querySave,querySort,queryPlatform
+  query,querySave,querySort,queryPlatform,queryOperator
 } from './service';
 import {message} from 'antd';
 import {pageHandle} from './utils';
 const statusData = {
-  '1':{'label':'开启中','color':'green'},
-  '-1':{'label':'已关闭','color':'red'}
+  'open':{'label':'开启中','color':'green'},
+  'close':{'label':'已关闭','color':'red'}
 }
 export default {
   namespace: 'BLOCK_NAME_CAMEL_CASE',
@@ -29,7 +29,6 @@ export default {
       });
     },
     *fetch({payload},{call,put,select}){
-      console.log(payload);
       const res = yield call(query, payload);
       yield put({
         type:'saveFetch',
@@ -43,7 +42,7 @@ export default {
     *fetchAdd({payload},{call,put,select}){
       const {search,pagination} = yield select(state => state.BLOCK_NAME_CAMEL_CASE);
       const res = yield call(querySave, payload);
-      if(res.errCode != 0){
+      if(res.errcode != 0){
         message.error(response.errmsg);
         return false;
       }else{
@@ -59,12 +58,28 @@ export default {
     *fetchEditSort({payload},{call,put,select}){
       const {search,pagination} = yield select(state => state.BLOCK_NAME_CAMEL_CASE);
       const res = yield call(querySort, payload);
-      if(res.errCode != 0){
+      if(res.errcode != 0){
         message.error(response.errmsg);
         return false;
       }else{
         let payloads = {...pagination, ...search};
         message.success(response.errmsg);
+        yield put({
+          type:'fetch',
+          payload: payloads
+        });
+        return true;
+      }
+    },
+    *fetchOperator({payload},{call,put,select}){
+      const {search,pagination} = yield select(state => state.BLOCK_NAME_CAMEL_CASE);
+      const res = yield call(queryOperator, payload);
+      if(res.errcode != 0){
+        message.error(res.errmsg);
+        return false;
+      }else{
+        let payloads = {...pagination, ...search};
+        message.success(res.errmsg);
         yield put({
           type:'fetch',
           payload: payloads

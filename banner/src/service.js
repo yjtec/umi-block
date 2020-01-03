@@ -16,21 +16,11 @@ export async function queryPlatform() {
   return request(`${baseUrl}/adv_platform`);
 } 
 
-// export async function queryType() {
-//   return request(`${baseUrl}/adv_type`);
-// }
-
-// export async function fetchDelete(id){
-//   return request(`/api/BLOCK_NAME/role/${id}`,{
-//     method:'delete'
-//   })
-// }
 //开启或关闭
-export async function queryOperator(id,params){
-  return request(`${baseUrl}/adv/${id}/${params}`,{
+export async function queryOperator(params){
+  return request(`${baseUrl}/adv/${params.id}/${params.operator}`,{
     method:'put',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    data:stringify(params)
   })  
 }
 

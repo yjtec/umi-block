@@ -1,9 +1,10 @@
 import React,{Component,Fragment,PureComponent} from 'react';
 import {connect} from 'dva';
 import styles from './index.css';
-import {Button,Card,Table} from 'antd';
+import {Button,Card,Table,Tag,Modal} from 'antd';
 import EditSort from './components/EditSort';
 import BannerOperator from './components/operator';
+const { confirm } = Modal;
 @connect(({ BLOCK_NAME_CAMEL_CASE,loading })=>({
 	listData: BLOCK_NAME_CAMEL_CASE.listData,
 	loading: loading.effects['BLOCK_NAME_CAMEL_CASE/fetch','BLOCK_NAME_CAMEL_CASE/fetchPlatform'],
@@ -34,7 +35,6 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
     })
   }
 	handleSearch = values => {
-    console.log(values);
     const {dispatch} = this.props;
     this.setState({
       search:values
@@ -47,28 +47,58 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
     })
   }
   renderHandle=(v,r)=>{
-    // if(v.status === 1){
-    //   return (
-    //     <Button type="primary" onClick={()=>this.handleOperator(v.id,'close')}>关闭</Button>
-    //   )
-    // }else{
-    //   return (
-    //     <Button type="primary" onClick={()=>this.handleOperator(v.id,'open')}>开启</Button>
-    //   )
-    // }
+    if(r.status === 1){
+      return (
+        <Button type="primary" size="small" onClick={()=>this.handleOperator(r.id,'close')}>关闭</Button>
+      )
+    }else{
+      return (
+        <Button type="primary" size="small" onClick={()=>this.handleOperator(r.id,'open')}>开启</Button>
+      )
+    }
   }
   handleOperator=(id, status)=>{
-    console.log(id, status)
-    // const {dispatch} = this.props;
-    // this.setState({
-    //   search:values
-    // },()=>{
-    //   const {search} = this.state;
-    //   dispatch({
-    //     type:'BLOCK_NAME_CAMEL_CASE/fetch',
-    //     payload:{page:1,...search}
-    //   })
-    // })
+    const that = this;
+    let title= "开启";
+    if(status == "close"){
+      title= "关闭";
+    }
+    const {dispatch} = that.props;
+    confirm({
+      title: "提示",
+      content: `您确定要${title}此轮播图?`,
+      onOk(){
+        dispatch({
+          type:'BLOCK_NAME_CAMEL_CASE/fetchOperator',
+          payload:{
+            id: id,
+            operator: status 
+          }
+        })
+      },
+      onCancel(){},
+    });
+  }
+  renderPlatForm=(v,r)=>{
+    const {type} = this.props;
+    let tit="";
+    if(type && type.length > 0){
+      type.map(item=>{
+        if(v === item.id){
+          tit = item.title
+        }
+      });
+      return <Tag color="green">{tit}</Tag>
+    }
+  }
+  renderStatus=(v,r)=>{
+    if(v === 1){
+      return (
+        <Tag color="green">开启中</Tag>
+      )
+    }else{
+      return <Tag color="red">已关闭</Tag>
+    }
   }
 	render(){
 		const {
@@ -88,8 +118,8 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       key:'title',
     },{
       title: '缩略图',
-      dataIndex:'pic',
-      key:'pic',
+      dataIndex:'pic_url',
+      key:'pic_url',
       render:(v,r) => (<span className={styles.logo}><img src={r} /></span>)
     },{
       width: 60,
@@ -100,9 +130,9 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       render:(v,r)=>(<EditSort {...r} />)
     },{
       title: '平台',
-      dataIndex:'platform',
-      key:'platform',
-      // render:(v,r) => (<span>{r}</span>)
+      dataIndex:'platform_id',
+      key:'platform_id',
+      render: this.renderPlatForm
     },{
       title: '时间',
       dataIndex:'created_at',
@@ -111,7 +141,7 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       title: '状态',
       dataIndex:'status',
       key:'status',
-      // render:this.renderStatus
+      render:this.renderStatus
     },{
       title: '操作',
       dataIndex:'handle',
@@ -122,7 +152,7 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
 	    <div className={styles.normal}>
 	      <Fragment>
 	        <BannerOperator {...this.props} statusData={status} typeData={type} onSubmit={this.handleSearch} />
-	        <Card>
+	        <Card className={styles.searchCard}>
 	        	<Table 
 	            dataSource={listData} 
 	            rowKey="id"

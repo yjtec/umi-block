@@ -1,3 +1,6 @@
+.normal{
+	border: 1px solid #e8e8e8;
+}
 .submitButtons {
     display: inline-block;
     white-space: nowrap;
@@ -12,4 +15,10 @@
 .logo{
 	width: 100px;
 	height: 100px;
+}
+.searchCard{
+	border: 0;
+}
+.searchCard:first-child{
+	padding-left: 34px;
 }
