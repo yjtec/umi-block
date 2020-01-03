@@ -14,7 +14,11 @@ export async function querySave(params){
 
 export async function queryPlatform() {
   return request(`${baseUrl}/adv_platform`);
-} 
+}
+
+export async function queryAdvType() {
+  return request(`${baseUrl}/adv_type`);
+}
 
 //开启或关闭
 export async function queryOperator(params){

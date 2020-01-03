@@ -6,10 +6,6 @@ const FormItem = Form.Item;
 const {Option} = Select;
 class BannerOperator extends Component{
   componentDidMount(){
-    // const {dispatch} = this.props;
-    // dispatch({
-    //   type:'BLOCK_NAME_CAMEL_CASE/fetchType'
-    // })
   }
   handleSearch = e => {
     e.preventDefault();
@@ -29,13 +25,11 @@ class BannerOperator extends Component{
     form.resetFields();
     onSubmit({});
   }
-  handleAddBanner = () => {
-
-  }
   render(){
     const {
       form:{getFieldDecorator},
       statusData,
+      platformData,
       typeData
     } = this.props;
     return(
@@ -54,13 +48,22 @@ class BannerOperator extends Component{
               </FormItem>
               <FormItem label="平台">
               {getFieldDecorator('platform')(
-                <Select style={{ width: 120 }} placeholder="请选择" >
-                  {typeData.map(item => (
+                <Select style={{ width: 200 }} placeholder="请选择" >
+                  {platformData.map(item => (
                     <Option key={item.id} value={item.id}>{item.title}</Option>
                   ))}
                 </Select>
               )}
               </FormItem>
+              <Form.Item label="分类">
+                {getFieldDecorator('type')(
+                  <Select style={{ width: 200 }} placeholder="请选择">
+                    {typeData.map(item => (
+                      <Option key={item.id} value={item.id}>{item.title}</Option>
+                    ))}
+                  </Select>
+                )}
+              </Form.Item>
               <div className={styles.submitButtons}>
                 <Button type="primary" htmlType="submit">
                   查询
@@ -73,7 +76,7 @@ class BannerOperator extends Component{
           </Form>
         </Col>
         <Col md={4} sm={4} lg={4} sm={24}>
-          <AddBanner typeData={typeData} />
+          <AddBanner platformData={platformData} typeData={typeData} />
         </Col>
       </Card>
     )

@@ -6,8 +6,7 @@ import {Upload} from '@yjtec/upload';
 const FormItem = Form.Item;
 const {Option} = Select;
 @connect(({ BLOCK_NAME_CAMEL_CASE,loading })=>({
-	loading: loading.effects['BLOCK_NAME_CAMEL_CASE/fetch'],
-  type:BLOCK_NAME_CAMEL_CASE.typeData,
+	loading: loading.effects['BLOCK_NAME_CAMEL_CASE/fetchAdd'],
 }))
 class AddBanner extends Component{
 	constructor(props) {
@@ -18,16 +17,12 @@ class AddBanner extends Component{
     }
   }
   componentDidMount(){
-    // const {dispatch} = this.props;
-    // dispatch({
-    //   type:'BLOCK_NAME_CAMEL_CASE/fetchType'
-    // })
+
   }
   handleOk= e => {
   	e.preventDefault();
     const {form,dispatch} = this.props;
     form.validateFieldsAndScroll((err,values) => {
-    	console.log(values);
     	if(err) return;
     	const { pic } = values;
 	    this.setState({
@@ -68,7 +63,7 @@ class AddBanner extends Component{
       wrapperCol: { span: 14 },
     };
     const { visibleModal, btnloading } = this.state;
-    const { form:{getFieldDecorator}, typeData } = this.props;
+    const { form:{getFieldDecorator}, platformData, typeData } = this.props;
     return(
     	<div className={styles.submitButtonsRight}>
         <Button type="primary" htmlType="submit" onClick={this.handleCancel}>
@@ -90,7 +85,21 @@ class AddBanner extends Component{
 	                message:"选择平台"
 	              }],
               })(
-	              <Select style={{ width: 120 }} placeholder="请选择" >
+	              <Select style={{ width: 200 }} placeholder="请选择" mode="multiple">
+	                {platformData.map(item => (
+	                  <Option key={item.id} value={item.id}>{item.title}</Option>
+	                ))}
+	              </Select>
+              )}
+            </Form.Item>
+            <Form.Item label="分类">
+              {getFieldDecorator('type',{
+              	rules:[{
+	                required:true,
+	                message:"选择分类"
+	              }],
+              })(
+	              <Select style={{ width: 200 }} placeholder="请选择">
 	                {typeData.map(item => (
 	                  <Option key={item.id} value={item.id}>{item.title}</Option>
 	                ))}

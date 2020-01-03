@@ -9,7 +9,8 @@ const { confirm } = Modal;
 	listData: BLOCK_NAME_CAMEL_CASE.listData,
 	loading: loading.effects['BLOCK_NAME_CAMEL_CASE/fetch','BLOCK_NAME_CAMEL_CASE/fetchPlatform'],
   status:BLOCK_NAME_CAMEL_CASE.statusData,
-  type:BLOCK_NAME_CAMEL_CASE.typeData,
+  platform:BLOCK_NAME_CAMEL_CASE.PlatData,
+  typeData:BLOCK_NAME_CAMEL_CASE.typeData,
   pagination:BLOCK_NAME_CAMEL_CASE.pagination,
 }))
 class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
@@ -21,6 +22,9 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
     const {dispatch} = this.props;
     dispatch({
       type:'BLOCK_NAME_CAMEL_CASE/fetchPlatform'
+    });
+    dispatch({
+      type:'BLOCK_NAME_CAMEL_CASE/fetchType'
     });
     dispatch({
       type:'BLOCK_NAME_CAMEL_CASE/fetch'
@@ -80,10 +84,10 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
     });
   }
   renderPlatForm=(v,r)=>{
-    const {type} = this.props;
+    const {platform} = this.props;
     let tit="";
-    if(type && type.length > 0){
-      type.map(item=>{
+    if(platform && platform.length > 0){
+      platform.map(item=>{
         if(v === item.id){
           tit = item.title
         }
@@ -100,12 +104,25 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       return <Tag color="red">已关闭</Tag>
     }
   }
+  renderType=(v,r)=>{
+    const {typeData} = this.props;
+    let tit="";
+    if(typeData && typeData.length > 0){
+      typeData.map(item=>{
+        if(v === item.id){
+          tit = item.title
+        }
+      });
+      return <span>{tit}</span>
+    }
+  }
 	render(){
 		const {
 			pagination,
 			loading,
       status,
-      type,
+      platform,
+      typeData,
       listData
     } = this.props;
     const columns =[{
@@ -134,6 +151,11 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       key:'platform_id',
       render: this.renderPlatForm
     },{
+      title: '类型',
+      dataIndex:'type_id',
+      key:'type_id',
+      render: this.renderType
+    },{
       title: '链接',
       dataIndex:'link',
       key:'link',
@@ -156,7 +178,7 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
 		return (
 	    <div className={styles.normal}>
 	      <Fragment>
-	        <BannerOperator {...this.props} statusData={status} typeData={type} onSubmit={this.handleSearch} />
+	        <BannerOperator {...this.props} statusData={status} platformData={platform} typeData={typeData} onSubmit={this.handleSearch} />
 	        <Card className={styles.searchCard}>
 	        	<Table 
 	            dataSource={listData} 

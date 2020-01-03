@@ -1,5 +1,5 @@
 import {
-  query,querySave,querySort,queryPlatform,queryOperator
+  query,querySave,querySort,queryPlatform,queryOperator,queryAdvType
 } from './service';
 import {message} from 'antd';
 import {pageHandle} from './utils';
@@ -11,6 +11,7 @@ export default {
   namespace: 'BLOCK_NAME_CAMEL_CASE',
   state: {
     listData:[],
+    PlatData:[],
     statusData:statusData,
     typeData:[],
     pagination:{
@@ -25,6 +26,13 @@ export default {
       const res = yield call(queryPlatform);
       yield put({
         type:'savePlatform',
+        payload:res
+      });
+    },
+    *fetchType({payload},{call,put,select}){
+      const res = yield call(queryAdvType);
+      yield put({
+        type:'saveAdvType',
         payload:res
       });
     },
@@ -93,8 +101,11 @@ export default {
       const {data, meta} = payload;
       return {...state,listData:data,pagination:pageHandle(meta)}
     },
-    savePlatform(state,{payload}){
+    saveAdvType(state,{payload}){
       return {...state,typeData:payload.data}
+    },
+    savePlatform(state,{payload}){
+      return {...state,PlatData:payload.data}
     },
     saveQuery(state,{payload}){
       return {...state,search:payload};

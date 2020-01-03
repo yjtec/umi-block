@@ -20,7 +20,6 @@ class EditSort extends Component{
   	e.preventDefault();
     const {form,dispatch,id} = this.props;
     form.validateFieldsAndScroll((err,values) => {
-    	console.log(values);
     	if(err) return;
 	    this.setState({
 	      btnloading: true
