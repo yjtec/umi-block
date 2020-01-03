@@ -18,7 +18,7 @@ class EditSort extends Component{
   }
   handleOk= e => {
   	e.preventDefault();
-    const {form,dispatch} = this.props;
+    const {form,dispatch,id} = this.props;
     form.validateFieldsAndScroll((err,values) => {
     	console.log(values);
     	if(err) return;
@@ -27,8 +27,14 @@ class EditSort extends Component{
 	    },()=>{
 	      dispatch({
 	        type:'BLOCK_NAME_CAMEL_CASE/fetchEditSort',
-	        payload: values
+	        payload: {
+            ...values,
+            id: id
+          }
 	      }).then(re=>{
+          this.setState({
+            btnloading: false
+          });
 	      	if(re){
 	      		this.setState({
 	      			visible: false
@@ -63,7 +69,7 @@ class EditSort extends Component{
           >  
           <Form {...formItemLayout} onSubmit={this.handleOk}>
             <Form.Item label="排序">
-              {getFieldDecorator('sort',{
+              {getFieldDecorator('weight',{
                 initialValue: this.props.weight
               })(<InputNumber min={0} step={1} />)}
             </Form.Item>

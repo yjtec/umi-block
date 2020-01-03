@@ -1,7 +1,7 @@
 import React,{Component,Fragment,PureComponent} from 'react';
 import {connect} from 'dva';
 import styles from './index.css';
-import {Button,Card,Table,Tag,Modal} from 'antd';
+import {Button,Card,Table,Tag,Modal,Tooltip} from 'antd';
 import EditSort from './components/EditSort';
 import BannerOperator from './components/operator';
 const { confirm } = Modal;
@@ -120,7 +120,7 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       title: '缩略图',
       dataIndex:'pic_url',
       key:'pic_url',
-      render:(v,r) => (<span className={styles.logo}><img src={r} /></span>)
+      render:(v,r) => (<span className={styles.logo}><img src={v} /></span>)
     },{
       width: 60,
       align: 'center',
@@ -133,6 +133,11 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       dataIndex:'platform_id',
       key:'platform_id',
       render: this.renderPlatForm
+    },{
+      title: '链接',
+      dataIndex:'link',
+      key:'link',
+      render: (v,r)=><Fragment>{ v ? <Tooltip placement="top" title={v}>查看</Tooltip> : '无'}</Fragment>
     },{
       title: '时间',
       dataIndex:'created_at',

@@ -43,11 +43,11 @@ export default {
       const {search,pagination} = yield select(state => state.BLOCK_NAME_CAMEL_CASE);
       const res = yield call(querySave, payload);
       if(res.errcode != 0){
-        message.error(response.errmsg);
+        message.error(res.errmsg);
         return false;
       }else{
         let payloads = {...pagination, ...search};
-        message.success(response.errmsg);
+        message.success(res.errmsg);
         yield put({
           type:'fetch',
           payload: payloads
@@ -59,11 +59,11 @@ export default {
       const {search,pagination} = yield select(state => state.BLOCK_NAME_CAMEL_CASE);
       const res = yield call(querySort, payload);
       if(res.errcode != 0){
-        message.error(response.errmsg);
+        message.error(res.errmsg);
         return false;
       }else{
         let payloads = {...pagination, ...search};
-        message.success(response.errmsg);
+        message.success(res.errmsg);
         yield put({
           type:'fetch',
           payload: payloads

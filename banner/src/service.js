@@ -24,8 +24,8 @@ export async function queryOperator(params){
   })  
 }
 
-export async function querySort(id,params){
-  return request(`/api/BLOCK_NAME/role/${id}`,{
+export async function querySort(params){
+  return request(`${baseUrl}/adv/${params.id}`,{
     method:'put',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     data:stringify(params)

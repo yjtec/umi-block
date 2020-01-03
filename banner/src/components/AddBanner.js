@@ -29,12 +29,16 @@ class AddBanner extends Component{
     form.validateFieldsAndScroll((err,values) => {
     	console.log(values);
     	if(err) return;
+    	const { pic } = values;
 	    this.setState({
 	      btnloading: true
 	    },()=>{
 	      dispatch({
 	        type:'BLOCK_NAME_CAMEL_CASE/fetchAdd',
-	        payload: values
+	        payload: {
+	        	...values,
+	        	pic: pic.path
+	        }
 	      }).then(re=>{
 	      	if(re){
 	      		this.setState({
