@@ -1,13 +1,13 @@
 {
-  "name": "@umi-block/bannerBlockDemo",
+  "name": "@umi-block/yjtec-banner",
   "version": "0.0.1",
-  "description": "banners picture",
+  "description": "banner umi block",
   "main": "src/index.js",
   "authors": {
     "name": "tsn",
     "email": "2308092717@qq.com"
   },
-  "repository": "https://github.com/tsn0106/umi-block-demo",
+  "repository": "umijs/umi-blocks/yjtec-banner",
   "scripts": {
     "dev": "umi dev"
   },
