@@ -137,7 +137,7 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
       title: '缩略图',
       dataIndex:'pic_url',
       key:'pic_url',
-      render:(v,r) => (<span className={styles.logo}><img src={v} /></span>)
+      render:(v,r) => (<span><img src={v} className={styles.logo}/></span>)
     },{
       width: 60,
       align: 'center',

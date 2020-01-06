@@ -5,9 +5,10 @@ export async function query(params) {
   return request(`${baseUrl}/adv?${stringify(params)}`);
 }
 export async function querySave(params){
-  return request(`${baseUrl}/adv`,{ 
+  const {platform_id,...rest} = params;
+  return request(`${baseUrl}/adv?${stringify({platform_id:platform_id},{arrayFormat:'indices'})}`,{ 
     method:'post',
-    data:params,
+    data:rest,
     requestType: 'form',
   })
 }
