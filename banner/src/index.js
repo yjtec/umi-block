@@ -71,6 +71,8 @@ class PAGE_NAME_UPPER_CAMEL_CASE extends PureComponent{
     confirm({
       title: "提示",
       content: `您确定要${title}此轮播图?`,
+      okText: '确认',
+      cancelText: '取消',
       onOk(){
         dispatch({
           type:'BLOCK_NAME_CAMEL_CASE/fetchOperator',
