@@ -55,7 +55,7 @@ class BannerOperator extends Component{
                 </Select>
               )}
               </FormItem>
-              <Form.Item label="分类">
+              <Form.Item label="类型">
                 {getFieldDecorator('type')(
                   <Select style={{ width: 200 }} placeholder="请选择">
                     {typeData.map(item => (

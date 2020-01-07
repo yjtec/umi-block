@@ -37,6 +37,7 @@ class AddBanner extends Component{
 	      }).then(re=>{
 	      	if(re){
 	      		this.setState({
+              btnloading: false,
 	      			visibleModal: false
 	      		})
 	      	}
@@ -82,7 +83,7 @@ class AddBanner extends Component{
               {getFieldDecorator('platform_id',{
               	rules:[{
 	                required:true,
-	                message:"选择平台"
+	                message:"请选择平台"
 	              }],
               })(
 	              <Select style={{ width: 200 }} placeholder="请选择" mode="multiple">
@@ -92,11 +93,11 @@ class AddBanner extends Component{
 	              </Select>
               )}
             </Form.Item>
-            <Form.Item label="分类">
-              {getFieldDecorator('type',{
+            <Form.Item label="类型">
+              {getFieldDecorator('type_id',{
               	rules:[{
 	                required:true,
-	                message:"选择分类"
+	                message:"请选择类型"
 	              }],
               })(
 	              <Select style={{ width: 200 }} placeholder="请选择">
