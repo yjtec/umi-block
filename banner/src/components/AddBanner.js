@@ -131,7 +131,7 @@ class AddBanner extends Component{
 	                buttonText="LOGO"
 	              />)}
 	          </Form.Item>
-	          <Form.Item label="排序">
+	          <Form.Item label="排序" extra="排序号越大越靠前">
 	            {getFieldDecorator('weight',{
 	            	initialValue: 0
 	            })(<InputNumber min={0} step={1} max={255} />)}

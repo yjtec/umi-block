@@ -67,7 +67,7 @@ class EditSort extends Component{
           onCancel={this.handleCancel}
           >  
           <Form {...formItemLayout} onSubmit={this.handleOk}>
-            <Form.Item label="排序">
+            <Form.Item label="排序" extra="排序号越大越靠前">
               {getFieldDecorator('weight',{
                 initialValue: this.props.weight
               })(<InputNumber min={0} step={1} />)}
