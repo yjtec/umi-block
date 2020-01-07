@@ -35,9 +35,11 @@ class AddBanner extends Component{
 	        	pic: pic.path
 	        }
 	      }).then(re=>{
+          this.setState({
+            btnloading: false
+          });
 	      	if(re){
 	      		this.setState({
-              btnloading: false,
 	      			visibleModal: false
 	      		})
 	      	}
