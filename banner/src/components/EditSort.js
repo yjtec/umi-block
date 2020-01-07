@@ -59,7 +59,7 @@ class EditSort extends Component{
     	<Fragment>
         <span onClick={this.handleCancel} style={{width: 60, display: 'inline-block', textAlign: 'center', cursor:'pointer'}}>{this.props.weight}</span>
         <Modal
-          title="新增轮播图"
+          title="修改排序"
           visible={visible}
           onOk={this.handleOk}
           destroyOnClose={true}
