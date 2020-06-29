@@ -1,0 +1,27 @@
+{
+  "name": "@umi-block/changeManage",
+  "version": "0.0.1",
+  "description": "npc show change old-new manage",
+  "main": "src/index.js",
+  "authors": {
+    "name": "tsn",
+    "email": "2308092717@qq.com"
+  },
+  "repository": "yjtec/changeManage/changeManage",
+  "scripts": {
+    "dev": "umi dev"
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^4.10.3",
+    "ant-design-pro": "^2.3.1",
+    "dva-cli": "^0.10.1",
+    "react": ">=16.0.0",
+    "umi-plugin-react": "^1.7.5",
+    "umi-request": "^1.0.7"
+  },
+  "devDependencies": {
+    "umi": "^2.9.0",
+    "umi-plugin-block-dev": "^2.0.0"
+  },
+  "license": "MIT"
+}
