@@ -1,13 +1,13 @@
 {
-  "name": "@umi-block/changeManage",
+  "name": "@umi-block/yjtec-experience",
   "version": "0.0.1",
-  "description": "npc show change old-new manage",
+  "description": "experience umi block",
   "main": "src/index.js",
   "authors": {
     "name": "tsn",
     "email": "2308092717@qq.com"
   },
-  "repository": "yjtec/changeManage/changeManage",
+  "repository": "umijs/umi-blocks/yjtec-experience",
   "scripts": {
     "dev": "umi dev"
   },
